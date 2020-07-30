@@ -10,14 +10,15 @@ import pl.krysinski.springw2.configuration.AppConfig;
 public class ShopPro extends ShopPlus{
 
     @Autowired
-    AppConfig appConfig;
+    public ShopPro(AppConfig appConfig) {
+        this.appConfig = appConfig;
+    }
 
     @Override
     public void calculatePrice(){
+        showProducts();
         double price = super.getSumProductsPrice(getProductList());
-        System.out.println("SPro1 " + super.getSumProductsPrice(getProductList()));
         double discount = appConfig.getDiscount();
-        System.out.println("SPro2 " + super.roundPrice(price * (1 - discount)));
-//        return super.roundPrice(price * (1 - discount));
+        System.out.println("Total price with 20% discount: " + super.roundPrice(price * (1 - discount)));
     }
 }

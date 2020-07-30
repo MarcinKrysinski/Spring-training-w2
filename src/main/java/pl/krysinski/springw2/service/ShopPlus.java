@@ -1,12 +1,10 @@
 package pl.krysinski.springw2.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import pl.krysinski.springw2.configuration.AppConfig;
-import pl.krysinski.springw2.controller.ShopStart;
+
 
 
 @Component
@@ -14,20 +12,20 @@ import pl.krysinski.springw2.controller.ShopStart;
 public class ShopPlus extends ShopStandard{
 
     @Autowired
-    AppConfig appConfig;
+    public ShopPlus(AppConfig appConfig) {
+        this.appConfig = appConfig;
+    }
 
-//    @Autowired
-//    ShopStart shopStart;
+    public ShopPlus() {
+    }
+
 
     @Override
     public void calculatePrice(){
+        showProducts();
         double price = super.getSumProductsPrice(getProductList());
-//        double price = shopStart.getProductsSum();
-//        System.out.println("SP1 " + shopStart.getProductsSum());
-        System.out.println("SP1 " + super.getSumProductsPrice(getProductList()));
         double vat = appConfig.getVat();
-        System.out.println("SP2 " + super.roundPrice(price * (1 + vat)));
-//        return super.roundPrice(price * (1 + vat));
+        System.out.println("Total Price with 23% VAT:  " + super.roundPrice(price * (1 + vat)));
     }
 
 

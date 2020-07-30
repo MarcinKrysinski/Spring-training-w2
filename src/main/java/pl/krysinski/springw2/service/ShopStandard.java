@@ -16,7 +16,6 @@ public class ShopStandard extends ShopService {
 
     @EventListener(ApplicationReadyEvent.class)
     public void calculatePrice(){
-        System.out.println(super.getSumProductsPrice(getProductList()));
-//        return super.getSumProductsPrice(getProductList());
+        super.showProducts();
     }
 }

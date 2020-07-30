@@ -7,8 +7,8 @@ import pl.krysinski.springw2.configuration.AppConfig;
 
 @Component
 @Profile("Pro")
-public class ShopPro extends ShopPlus{
-
+public class ShopPro extends ShopPlus implements Shop{
+    
     @Autowired
     public ShopPro(AppConfig appConfig) {
         this.appConfig = appConfig;

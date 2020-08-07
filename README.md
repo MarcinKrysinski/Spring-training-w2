@@ -1,2 +1,2 @@
 # Spring-training-w2
-First steps with Spring - introducion
+First steps with Spring - introduction
